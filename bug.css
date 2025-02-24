@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an uncommon error related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This rule is unexpected */
+}
+```
+
+The issue arises because the `div p` selector is more specific than the `div` selector.  While it might seem intuitive that the `div` selector should apply its `color: blue;` to the `p` element *inside* the `div`, the more specific selector wins, resulting in green text.  This is a subtle bug that developers might miss if they aren't meticulously reviewing specificity rules.
