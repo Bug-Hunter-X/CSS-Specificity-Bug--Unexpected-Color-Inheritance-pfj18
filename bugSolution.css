@@ -1,0 +1,33 @@
+The solution is to understand the specificity of the CSS selectors involved and adjust them accordingly.  There are several ways to solve the problem. One option is to add !important to the div rule as a quick fix:
+
+```css
+div {
+  color: blue !important;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; 
+}
+```
+
+However, !important should generally be avoided as it can create hard to track down issues.  A cleaner approach is to ensure that the desired selector is specific enough to override or remove the conflicting selector:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  /*This rule is removed since it is causing problems*/
+}
+```
+
+By removing the conflicting `div p` selector and relying on inheritance from the `div` element's `color` property, the expected outcome of blue text within the `div` is achieved.
